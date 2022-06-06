@@ -6,10 +6,10 @@ export default function Form() {
         <div className="col-9">
           <input
             type="text"
-            class="form-control"
-            placeholder="Enter the city's name"
-            autocomplete="off"
-            autofocus="on"
+            className="form-control"
+            placeHolder="Enter the city's name"
+            autoComplete="off"
+            autoFocus="on"
             id="search-text-input"
           />
         </div>
