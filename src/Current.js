@@ -12,11 +12,11 @@ export default function Current() {
           <span className="currentWeatherEmoji">
             ☀️ 19
             <sup id="degC">
-              <a href="#">℃</a>
+              <a href="/">℃</a>
             </sup>
             <sup>|</sup>
             <sup id="degF">
-              <a href="#">℉</a>{" "}
+              <a href="/">℉</a>{" "}
             </sup>{" "}
           </span>
         </ul>
