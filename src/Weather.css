@@ -17,12 +17,6 @@ p {
   font-size: medium;
 }
 
-#currentButton {
-  background: #218838;
-  box-shadow: #a8d9b1;
-  padding: 0px auto;
-  color: white;
-}
 .container {
   width: 50%;
 }
