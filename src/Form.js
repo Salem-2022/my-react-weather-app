@@ -7,7 +7,7 @@ export default function Form() {
           <input
             type="text"
             className="form-control"
-            placeHolder="Enter the city's name"
+            placeholder="Enter the city's name"
             autoComplete="off"
             autoFocus="on"
             id="search-text-input"
