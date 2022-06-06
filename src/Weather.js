@@ -15,6 +15,9 @@ export default function Weather() {
           </div>
           <Current />
         </div>
+        <a href="https://github.com/Salem-2022/my-react-weather-app">
+          Open-source code on GitHub
+        </a>
       </div>
     </div>
   );
