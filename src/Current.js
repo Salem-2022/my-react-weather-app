@@ -38,7 +38,7 @@ export default function Current() {
                 type="text"
                 className="form-control search-text-input"
                 placeholder="Enter the city's name"
-                autoComplete="off"
+                autoComplete="on"
                 autoFocus="on"
                 onChange={updateCity}
               />
