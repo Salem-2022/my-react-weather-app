@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 import Form from "./Form";
 import Current from "./Current";
 
@@ -17,7 +17,9 @@ export default function Weather() {
         </div>
         <a href="https://github.com/Salem-2022/my-react-weather-app">
           Open-source code on GitHub
-        </a>
+        </a>{" "}
+        and{" "}
+        <a href="https://jade-genie-8cbb12.netlify.app/">hosted on Netlify.</a>
       </div>
     </div>
   );
