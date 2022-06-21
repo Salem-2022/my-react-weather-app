@@ -1,88 +1,92 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import Forecast from "./Forecast";
+import UpdatedDate from "./UpdatedDate";
+import Units from "./Units";
 
 export default function Current() {
-  let [city, setCity] = useState("");
-  let [temperature, setTemperature] = useState("");
-  let [description, setDescription] = useState("");
-  let [humidity, setHumidity] = useState("");
-  let [wind, setWind] = useState("");
-  let [icon, setIcon] = useState("");
+  let [ready, setReady] = useState(false);
+  let [city, setCity] = useState("Stockholm");
+  let [weather, setWeather] = useState({});
+
+  function showWeather(response) {
+    //Kelvin = T in ℃ + 273.15
+    setWeather({
+      city: response.data.name,
+      date: new Date(response.data.dt * 1000),
+      temperature: Math.round(response.data.main.temp - 273.15),
+      description: response.data.weather[0].description,
+      humidity: Math.round(response.data.main.humidity),
+      wind: Math.round(response.data.wind.speed),
+      icon: response.data.weather[0].icon,
+    });
+    setReady(true);
+  }
+  let imgUrl = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
+
+  function search() {
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ab06a115531350a624a8309eb2a5ab0c&untis=metric`;
+    axios.get(url).then(showWeather);
+  }
   function showCity(event) {
     event.preventDefault();
+    search();
   }
   function updateCity(event) {
     setCity(event.target.value);
   }
-  function showWeather(response) {
-    //Kelvin = T in ℃ + 273.15
-    setTemperature(Math.round(response.data.main.temp - 273.15));
-    setDescription(response.data.weather[0].description);
-    setHumidity(Math.round(response.data.main.humidity));
-    setWind(Math.round(response.data.wind.speed));
-    setIcon(response.data.weather[0].icon);
-  }
-
-  let imgUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ab06a115531350a624a8309eb2a5ab0c&untis=metric`;
-  axios.get(url).then(showWeather);
-
-  return (
-    <div>
-      <div className="card-body mt-4 md-5">
-        <form className="search-form" onSubmit={showCity}>
-          <div className="row">
-            <div className="col-9">
-              <input
-                type="text"
-                className="form-control search-text-input"
-                placeholder="Enter the city's name"
-                autoComplete="on"
-                autoFocus="on"
-                onChange={updateCity}
-              />
+  if (ready) {
+    return (
+      <div>
+        <div className="card-body mt-4 md-5">
+          <form className="search-form" onSubmit={showCity}>
+            <div className="row">
+              <div className="col-9">
+                <input
+                  type="search"
+                  className="form-control search-text-input"
+                  placeholder="Enter the city's name"
+                  autoComplete="off"
+                  autoFocus="on"
+                  onChange={updateCity}
+                />
+              </div>
+              <div className="col">
+                <input
+                  type="submit"
+                  className="btn btn-primary searchButton"
+                  value="Search"
+                />
+              </div>
             </div>
-            <div className="col">
-              <input
-                type="submit"
-                className="btn btn-primary searchButton"
-                value="Search"
-              />
-            </div>
+          </form>
+        </div>
+        <div className="row">
+          <div className="col currentWeather">
+            <ul>
+              <li className="currentCity">{weather.city}</li>
+
+              <li className="currentDay">
+                <UpdatedDate newDate={weather.date} />{" "}
+              </li>
+              <li className="currentWeatherEmoji">
+                <img src={imgUrl} alt="" />
+
+                <Units tempDefault={weather.temperature} />
+              </li>
+            </ul>
           </div>
-        </form>
-      </div>
-      <div className="row">
-        <div className="col currentWeather">
-          <ul>
-            <li className="currentCity">{city}</li>
-            <li className="currentDay">08:10</li>
-            <li className="currentWeatherEmoji">
-              <img src={imgUrl} alt="" />
-              <span className="currentTemperature">
-                {temperature}
-                <sup id="degC">
-                  <a href="/">℃</a>
-                </sup>
-                <sup>|</sup>
-                <sup id="degF">
-                  <a href="/">℉</a>{" "}
-                </sup>{" "}
-              </span>{" "}
-            </li>
-          </ul>
+          <div className="col descriptions mt-5">
+            <ul>
+              <li>Description:{weather.description} </li>
+              <li>Humidity:{weather.humidity}%</li>
+              <li>Wind: {weather.wind}m/s </li>
+            </ul>
+          </div>
         </div>
-        <div className="col descriptions mt-5">
-          <ul>
-            <li>Description:{description} </li>
-            <li>Humidity:{humidity}%</li>
-            <li>Wind: {wind}m/s </li>
-          </ul>
-        </div>
-
-        <Forecast />
       </div>
-    </div>
-  );
+    );
+  } else {
+    search();
+    return "Loading...";
+  }
 }
