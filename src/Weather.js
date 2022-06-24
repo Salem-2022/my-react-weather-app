@@ -1,5 +1,4 @@
 import React from "react";
-import Forecast from "./Forecast";
 
 import Current from "./Current";
 
@@ -11,7 +10,6 @@ export default function Weather() {
       <div className="container mt-5">
         <div className="card">
           <Current />
-          <Forecast />
         </div>
         <a href="https://github.com/Salem-2022/my-react-weather-app">
           Open-source code on GitHub

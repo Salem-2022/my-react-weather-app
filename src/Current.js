@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import UpdatedDate from "./UpdatedDate";
 import Units from "./Units";
+import Forecast from "./Forecast";
 
 export default function Current() {
   let [ready, setReady] = useState(false);
@@ -12,6 +13,7 @@ export default function Current() {
     //Kelvin = T in ℃ + 273.15
     setWeather({
       city: response.data.name,
+      coord: response.data.coord,
       date: new Date(response.data.dt * 1000),
       temperature: Math.round(response.data.main.temp - 273.15),
       description: response.data.weather[0].description,
@@ -83,6 +85,7 @@ export default function Current() {
             </ul>
           </div>
         </div>
+        <Forecast coord={weather.coord} />
       </div>
     );
   } else {
