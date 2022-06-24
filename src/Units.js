@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 
 export default function Units(props) {
-  let [temp, setTemp] = useState(props.tempDefault);
+  let [unit, setUnit] = useState("metric");
 
   function farenheitTemp(event) {
     event.preventDefault();
-    setTemp(Math.round(props.tempDefault * 9) / 5 + 32);
+    setUnit("empirical");
   }
   function celsiusTemp(event) {
     event.preventDefault();
-    setTemp(Math.round(props.tempDefault));
+    setUnit("metric");
   }
-  if ({ temp } === props.tempDefault) {
+  if (unit === "metric") {
     return (
       <span className="currentTemperature">
-        {Math.round((props.tempDefault * 9) / 5 + 32)}
+        {Math.round(props.tempDefault)}
         <sup>
           <a href="/" onClick={celsiusTemp}>
             ℃
@@ -29,9 +29,10 @@ export default function Units(props) {
       </span>
     );
   } else {
+    let empirical = Math.round((props.tempDefault * 9) / 5 + 32);
     return (
       <span className="currentTemperature">
-        {Math.round(temp)}
+        {empirical}
         <sup>
           <a href="/" onClick={celsiusTemp}>
             ℃
