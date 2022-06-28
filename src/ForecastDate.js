@@ -2,7 +2,8 @@ import React from "react";
 
 export default function ForecastDate(props) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = days[props.forecastDate.getDay()];
+  let date = new Date(props.forecastDate * 1000);
+  let day = days[date.getDay()];
   let hours = props.forecastDate.getHours();
   if (hours < 10) {
     hours = `0${hours}`;

@@ -16,35 +16,36 @@ export default function Forecast(props) {
   let imgUrlThird = `https://openweathermap.org/img/wn/${forecastData[2].weather[2].icon}@2x.png`;
   let imgUrlFourth = `https://openweathermap.org/img/wn/${forecastData[3].weather[3].icon}@2x.png`;
   let imgUrlFifth = `https://openweathermap.org/img/wn/${forecastData[4].weather[4].icon}@2x.png`;
-
   if (ready) {
     return (
-      <div className="forecast">
-        <div className="row forecast">
-          <div className="col">
-            <ul>
-              <li className="sat">Thu</li>
-              <li className="satEmoji">
-                {" "}
-                <img src={imgUrlFirst} alt="#" />
-              </li>
-              <li className="satTemperature">
-                {" "}
-                {Math.round(forecastData[0].temp.day)} ℃{" "}
-              </li>{" "}
-            </ul>
-          </div>
+      <div className="row forecast">
+        <div className="col">
+          <ul>
+            <li className="sat">
+              <ForecastDate forecastDate={forecastData[0].dt} />
+            </li>
+            <li className="satEmoji">
+              {" "}
+              <img src={imgUrlFirst} alt="" />{" "}
+            </li>
+            <li className="satTemperature">
+              {" "}
+              <span>{Math.round(forecastData[0].temp.max)}° </span>{" "}
+              <span>{Math.round(forecastData[0].temp.min)}° </span>
+            </li>{" "}
+          </ul>
           <div className="col">
             <ul>
               <li className="sun">
-                <ForecastDate forecastDate={forecastData[1].dt * 1000} />
+                <ForecastDate forecastDate={forecastData[1]} />
               </li>
               <li className="sunEmoji">
                 <img src={imgUrlSecond} alt="" />
               </li>
               <li className="sunTemperature">
                 {" "}
-                {Math.round(forecastData[1].temp.day)} ℃{" "}
+                <span> {Math.round(forecastData[1].temp.max)}℃</span>{" "}
+                <span> {Math.round(forecastData[1].temp.min)}℃</span>
               </li>{" "}
             </ul>
           </div>
@@ -52,14 +53,15 @@ export default function Forecast(props) {
           <div className="col">
             <ul>
               <li className="mon">
-                <ForecastDate forecastDate={forecastData[2].dt * 1000} />
+                <ForecastDate forecastDate={forecastData[2]} />
               </li>
               <li className="monEmoji">
                 <img src={imgUrlThird} alt="" />
               </li>
               <li className="monTemperature">
                 {" "}
-                {Math.round(forecastData[2].temp.day)} ℃{" "}
+                <span>{Math.round(forecastData[2].temp.max)} ℃</span>
+                <span> {Math.round(forecastData[2].temp.max)}℃</span>{" "}
               </li>{" "}
             </ul>
           </div>
@@ -67,14 +69,15 @@ export default function Forecast(props) {
           <div className="col">
             <ul>
               <li className="tue">
-                <ForecastDate forecastDate={forecastData[3].dt * 1000} />
+                <ForecastDate forecastDate={forecastData[3]} />
               </li>
               <li className="tueEmoji">
                 <img src={imgUrlFourth} alt="" />
               </li>
               <li className="tueTemperature">
                 {" "}
-                {Math.round(forecastData[3].temp.day)} ℃{" "}
+                <span> {Math.round(forecastData[3].temp.max)}℃</span>
+                <span> {Math.round(forecastData[3].temp.min)}℃</span>
               </li>{" "}
             </ul>
           </div>
@@ -82,16 +85,15 @@ export default function Forecast(props) {
           <div className="col">
             <ul>
               <li className="wed">
-                <ForecastDate
-                  forecastDate={Math.round(forecastData[4].dt * 1000)}
-                />
+                <ForecastDate forecastDate={Math.round(forecastData[4])} />
               </li>
               <li className="wedEmoji">
                 <img src={imgUrlFifth} alt="" />
               </li>
               <li className="wedTemperature">
                 {" "}
-                {Math.round(forecastData[4].temp.day)} ℃{" "}
+                <span> {Math.round(forecastData[4].temp.max)}℃</span>
+                <span> {Math.round(forecastData[1].temp.min)}℃</span>
               </li>{" "}
             </ul>
           </div>
