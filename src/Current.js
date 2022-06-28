@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import UpdatedDate from "./UpdatedDate";
 import Units from "./Units";
-import Forecast from "./Forecast";
 
 export default function Current() {
   let [ready, setReady] = useState(false);
@@ -85,7 +84,6 @@ export default function Current() {
             </ul>
           </div>
         </div>
-        <Forecast coord={weather.coord} />
       </div>
     );
   } else {
