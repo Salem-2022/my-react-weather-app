@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-//import ForecastDate from "./ForecastDate";
+import ForecastDate from "./ForecastDate";
 
 export default function Forecast(props) {
   let [ready, setReady] = useState(false);
-  let [forecastData, setForecastData] = useState(null);
+  let [forecastData, setForecastData] = useState("");
 
   function showForecast(response) {
     setForecastData(response.data.daily);
@@ -16,14 +16,17 @@ export default function Forecast(props) {
   let imgUrlThird = `https://openweathermap.org/img/wn/${forecastData[2].weather[2].icon}@2x.png`;
   let imgUrlFourth = `https://openweathermap.org/img/wn/${forecastData[3].weather[3].icon}@2x.png`;
   let imgUrlFifth = `https://openweathermap.org/img/wn/${forecastData[4].weather[4].icon}@2x.png`;
+
   if (ready) {
     return (
       <div className="row forecast">
         <div className="col">
           <ul>
-            <li className="sat">{forecastData[0].dt}</li>
+            <li className="sat">
+              <ForecastDate forecastDate={forecastData[0].dt} />
+            </li>
             <li className="satEmoji">
-              <img src={imgUrlFirst} alt="/" />{" "}
+              <img src={imgUrlFirst} alt="/" />
             </li>
             <li className="satTemperature">
               {" "}
@@ -36,21 +39,25 @@ export default function Forecast(props) {
         </div>
         <div className="col">
           <ul>
-            <li className="sun">{forecastData[1].dt}</li>
+            <li className="sun">
+              <ForecastDate forecastDate={forecastData[1].dt} />
+            </li>
             <li className="sunEmoji">
               <img src={imgUrlSecond} alt="" />
             </li>
             <li className="sunTemperature">
               {" "}
+              <span>{Math.round(forecastData[1].temp.max)} ℃</span>
               <span> {Math.round(forecastData[1].temp.max)}℃</span>{" "}
-              <span> {Math.round(forecastData[1].temp.min)}℃</span>
             </li>{" "}
           </ul>
         </div>
 
         <div className="col">
           <ul>
-            <li className="mon">{forecastData[2].dt}</li>
+            <li className="mon">
+              <ForecastDate forecastDate={forecastData[2].dt} />
+            </li>
             <li className="monEmoji">
               <img src={imgUrlThird} alt="" />
             </li>
@@ -64,7 +71,9 @@ export default function Forecast(props) {
 
         <div className="col">
           <ul>
-            <li className="tue">{forecastData[3].dt}</li>
+            <li className="tue">
+              <ForecastDate forecastDate={forecastData[3].dt} />
+            </li>
             <li className="tueEmoji">
               <img src={imgUrlFourth} alt="" />
             </li>
@@ -78,7 +87,9 @@ export default function Forecast(props) {
 
         <div className="col">
           <ul>
-            <li className="wed">{forecastData[4].dt}</li>
+            <li className="wed">
+              <ForecastDate forecastDate={forecastData[4].dt} />
+            </li>
             <li className="wedEmoji">
               <img src={imgUrlFifth} alt="" />
             </li>
