@@ -18,6 +18,7 @@ export default function Forecast(props) {
   let imgUrlFifth = `https://openweathermap.org/img/wn/${forecastData[4].weather[4].icon}@2x.png`;
 
   if (ready) {
+    console.log(forecastData[0]);
     return (
       <div className="row forecast">
         <div className="col">
