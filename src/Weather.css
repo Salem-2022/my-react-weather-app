@@ -63,19 +63,8 @@ p {
   font-size: 20px;
   line-height: 1.2;
 }
-
-.satEmoji {
-  font-size: 30px;
-}
-.sunEmoji {
-  font-size: 30px;
-}
-.monEmoji {
-  font-size: 30px;
-}
-.tueEmoji {
-  font-size: 30px;
-}
-.wedEmoji {
-  font-size: 30px;
+li.dailyDate,
+li.dailyIcon,
+li.dailyTemp {
+  display: inline-block;
 }
