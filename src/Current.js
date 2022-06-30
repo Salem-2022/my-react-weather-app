@@ -22,6 +22,7 @@ export default function Current() {
       icon: response.data.weather[0].icon,
     });
     setReady(true);
+    console.log(weather);
   }
 
   function search() {
@@ -37,7 +38,8 @@ export default function Current() {
   }
   if (ready) {
     let imgUrl = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
-
+    let latitude = `${weather.coord.lat}`;
+    let longitude = `${weather.coord.lon}`;
     return (
       <div>
         <div className="card-body mt-4 md-5">
@@ -87,7 +89,7 @@ export default function Current() {
           </div>
         </div>
 
-        <Forecast coord={weather.coord} />
+        <Forecast lat={latitude} lon={longitude} />
       </div>
     );
   } else {

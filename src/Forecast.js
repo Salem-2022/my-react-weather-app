@@ -103,7 +103,7 @@ export default function Forecast(props) {
     );
   } else {
     let apiKeySec = "ce0532e620af9e4ac6e339613de6decd";
-    let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.coord.lat}&lon=${props.coord.lon}&appid=${apiKeySec}&units=metric`;
+    let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&appid=${apiKeySec}&units=metric`;
     axios.get(`${apiUrlOneCall}`).then(showForecast);
     return "Loading";
   }
