@@ -26,7 +26,7 @@ export default function Current() {
   let imgUrl = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
 
   function search() {
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ab06a115531350a624a8309eb2a5ab0c&untis=metric`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ce0532e620af9e4ac6e339613de6decd&untis=metric`;
     axios.get(url).then(showWeather);
   }
   function showCity(event) {

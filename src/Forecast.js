@@ -10,15 +10,13 @@ export default function Forecast(props) {
     setForecastData(response.data.daily);
     setReady(true);
   }
-
-  let imgUrlFirst = `https://openweathermap.org/img/wn/${forecastData[0].weather[0].icon}@2x.png`;
-  let imgUrlSecond = `https://openweathermap.org/img/wn/${forecastData[1].weather[1].icon}@2x.png`;
-  let imgUrlThird = `https://openweathermap.org/img/wn/${forecastData[2].weather[2].icon}@2x.png`;
-  let imgUrlFourth = `https://openweathermap.org/img/wn/${forecastData[3].weather[3].icon}@2x.png`;
-  let imgUrlFifth = `https://openweathermap.org/img/wn/${forecastData[4].weather[4].icon}@2x.png`;
-
   if (ready) {
-    console.log(forecastData[0]);
+    let imgUrlFirst = `https://openweathermap.org/img/wn/${forecastData[0].weather[0].icon}@2x.png`;
+    let imgUrlSecond = `https://openweathermap.org/img/wn/${forecastData[1].weather[0].icon}@2x.png`;
+    let imgUrlThird = `https://openweathermap.org/img/wn/${forecastData[2].weather[0].icon}@2x.png`;
+    let imgUrlFourth = `https://openweathermap.org/img/wn/${forecastData[3].weather[0].icon}@2x.png`;
+    let imgUrlFifth = `https://openweathermap.org/img/wn/${forecastData[4].weather[0].icon}@2x.png`;
+
     return (
       <div className="row forecast">
         <div className="col">
@@ -97,14 +95,14 @@ export default function Forecast(props) {
             <li className="wedTemperature">
               {" "}
               <span> {Math.round(forecastData[4].temp.max)}℃</span>
-              <span> {Math.round(forecastData[1].temp.min)}℃</span>
+              <span> {Math.round(forecastData[4].temp.min)}℃</span>
             </li>{" "}
           </ul>
         </div>
       </div>
     );
   } else {
-    let apiKeySec = "d4b7a77de22e4c5dc546f41665d594cb";
+    let apiKeySec = "ce0532e620af9e4ac6e339613de6decd";
     let apiUrlOneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.coord.lat}&lon=${props.coord.lon}&appid=${apiKeySec}&units=metric`;
     axios.get(`${apiUrlOneCall}`).then(showForecast);
     return "Loading";
