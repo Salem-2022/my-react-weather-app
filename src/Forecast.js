@@ -22,7 +22,7 @@ export default function Forecast(props) {
         <div className="col">
           <ul>
             <li className="sat">
-              <ForecastDate forecastDate={forecastData[0].dt} />
+              <ForecastDate forecastDate={forecastData[1].dt} />
             </li>
             <li className="satEmoji">
               <img src={imgUrlFirst} alt="/" />
@@ -30,8 +30,8 @@ export default function Forecast(props) {
             <li className="satTemperature">
               {" "}
               <small>
-                <span>{Math.round(forecastData[0].temp.max)}° </span>{" "}
-                <span>{Math.round(forecastData[0].temp.min)}° </span>
+                <span>{Math.round(forecastData[1].temp.max)}° </span>{" "}
+                <span>{Math.round(forecastData[1].temp.min)}° </span>
               </small>
             </li>{" "}
           </ul>
@@ -39,28 +39,12 @@ export default function Forecast(props) {
         <div className="col">
           <ul>
             <li className="sun">
-              <ForecastDate forecastDate={forecastData[1].dt} />
+              <ForecastDate forecastDate={forecastData[2].dt} />
             </li>
             <li className="sunEmoji">
               <img src={imgUrlSecond} alt="" />
             </li>
             <li className="sunTemperature">
-              {" "}
-              <span>{Math.round(forecastData[1].temp.max)} ℃</span>
-              <span> {Math.round(forecastData[1].temp.max)}℃</span>{" "}
-            </li>{" "}
-          </ul>
-        </div>
-
-        <div className="col">
-          <ul>
-            <li className="mon">
-              <ForecastDate forecastDate={forecastData[2].dt} />
-            </li>
-            <li className="monEmoji">
-              <img src={imgUrlThird} alt="" />
-            </li>
-            <li className="monTemperature">
               {" "}
               <span>{Math.round(forecastData[2].temp.max)} ℃</span>
               <span> {Math.round(forecastData[2].temp.max)}℃</span>{" "}
@@ -70,16 +54,32 @@ export default function Forecast(props) {
 
         <div className="col">
           <ul>
-            <li className="tue">
+            <li className="mon">
               <ForecastDate forecastDate={forecastData[3].dt} />
+            </li>
+            <li className="monEmoji">
+              <img src={imgUrlThird} alt="" />
+            </li>
+            <li className="monTemperature">
+              {" "}
+              <span>{Math.round(forecastData[3].temp.max)} ℃</span>
+              <span> {Math.round(forecastData[3].temp.max)}℃</span>{" "}
+            </li>{" "}
+          </ul>
+        </div>
+
+        <div className="col">
+          <ul>
+            <li className="tue">
+              <ForecastDate forecastDate={forecastData[4].dt} />
             </li>
             <li className="tueEmoji">
               <img src={imgUrlFourth} alt="" />
             </li>
             <li className="tueTemperature">
               {" "}
-              <span> {Math.round(forecastData[3].temp.max)}℃</span>
-              <span> {Math.round(forecastData[3].temp.min)}℃</span>
+              <span> {Math.round(forecastData[4].temp.max)}℃</span>
+              <span> {Math.round(forecastData[4].temp.min)}℃</span>
             </li>{" "}
           </ul>
         </div>
@@ -87,15 +87,15 @@ export default function Forecast(props) {
         <div className="col">
           <ul>
             <li className="wed">
-              <ForecastDate forecastDate={forecastData[4].dt} />
+              <ForecastDate forecastDate={forecastData[5].dt} />
             </li>
             <li className="wedEmoji">
               <img src={imgUrlFifth} alt="" />
             </li>
             <li className="wedTemperature">
               {" "}
-              <span> {Math.round(forecastData[4].temp.max)}℃</span>
-              <span> {Math.round(forecastData[4].temp.min)}℃</span>
+              <span> {Math.round(forecastData[5].temp.max)}℃</span>
+              <span> {Math.round(forecastData[5].temp.min)}℃</span>
             </li>{" "}
           </ul>
         </div>

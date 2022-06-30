@@ -23,7 +23,6 @@ export default function Current() {
     });
     setReady(true);
   }
-  let imgUrl = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
 
   function search() {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ce0532e620af9e4ac6e339613de6decd&untis=metric`;
@@ -37,6 +36,8 @@ export default function Current() {
     setCity(event.target.value);
   }
   if (ready) {
+    let imgUrl = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
+
     return (
       <div>
         <div className="card-body mt-4 md-5">
