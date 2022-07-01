@@ -11,11 +11,19 @@ export default function Weather() {
         <div className="card">
           <Current />
         </div>
-        <a href="https://github.com/Salem-2022/my-react-weather-app">
+        <a
+          href="https://github.com/Salem-2022/my-react-weather-app"
+          className="text-center"
+        >
           Open-source code on GitHub
         </a>{" "}
         and{" "}
-        <a href="https://jade-genie-8cbb12.netlify.app/">hosted on Netlify.</a>
+        <a
+          href="https://jade-genie-8cbb12.netlify.app/"
+          className="text-center"
+        >
+          hosted on Netlify.
+        </a>
       </div>
     </div>
   );
