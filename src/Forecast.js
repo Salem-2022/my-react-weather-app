@@ -30,65 +30,53 @@ export default function Forecast(props) {
       imgUrlFifth,
     ];
     return (
-      <div className="row forecast">
+      <div className="row forecast text-center">
         <div className="row">
-          <ul>
-            {forecastData.map(function (dailyDate, index) {
-              if (index < 5) {
-                return (
-                  <li className="dailyDate" key={index}>
-                    <ForecastDate forecastDate={dailyDate.dt} />
-                  </li>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </ul>
+          {forecastData.map(function (dailyDate, index) {
+            if (index < 5) {
+              return (
+                <div className="dailyDate col" key={index}>
+                  <ForecastDate forecastDate={dailyDate.dt} />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
         </div>
         <div className="row">
-          <ul>
-            {imgUrl.map(function (dailyIcon, index) {
-              if (index < 5) {
-                return (
-                  <li className="dailyIcon" key={index}>
-                    <img src={dailyIcon} alt="/" />
-                  </li>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </ul>
+          {imgUrl.map(function (dailyIcon, index) {
+            if (index < 5) {
+              return (
+                <div className="dailyIcon col" key={index}>
+                  <img src={dailyIcon} alt="/" />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
         </div>
         <div className="row">
-          <ul>
+          <ul className="dailyTemp">
             <li className="dailyTemp">
               {" "}
-              <small>
-                {forecastData.map(function (dailyMaxTemp, index) {
-                  if (index < 5) {
-                    return (
-                      <span key={index}>
+              {forecastData.map(function (dailyMaxTemp, index) {
+                if (index < 5) {
+                  return (
+                    <span className="dailyMaxMinTemp">
+                      <span key={index} className="maxTemp">
                         {Math.round(dailyMaxTemp.temp.max)}°{" "}
                       </span>
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
-                {forecastData.map(function (dailyMaxTemp, index) {
-                  if (index < 5) {
-                    return (
-                      <span key={index}>
+                      <span key={index} className="minTemp text-muted">
                         {Math.round(dailyMaxTemp.temp.min)}°{" "}
                       </span>
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
-              </small>
+                    </span>
+                  );
+                } else {
+                  return null;
+                }
+              })}
             </li>{" "}
           </ul>
         </div>

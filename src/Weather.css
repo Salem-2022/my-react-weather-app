@@ -68,3 +68,9 @@ li.dailyIcon,
 li.dailyTemp {
   display: inline-block;
 }
+
+span.dailyMaxMinTemp {
+  padding-right: 40px;
+  font-size: 16px;
+  padding-left: 30px;
+}
