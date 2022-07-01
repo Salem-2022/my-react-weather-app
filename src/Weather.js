@@ -13,14 +13,16 @@ export default function Weather() {
         </div>
         <a
           href="https://github.com/Salem-2022/my-react-weather-app"
-          className="text-center"
+          target="_blank"
+          rel="noreferrer"
         >
           Open-source code on GitHub
         </a>{" "}
         and{" "}
         <a
           href="https://jade-genie-8cbb12.netlify.app/"
-          className="text-center"
+          target="_blank"
+          rel="noreferrer"
         >
           hosted on Netlify.
         </a>
